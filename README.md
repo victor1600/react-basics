@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Basics
 
-## Available Scripts
+Puts everything into a single component. 
 
-In the project directory, you can run:
+- State: Object with values that determines how the component behaves and renders
+- Events: Updates state dynamically
 
-### `npm start`
+- Extends React.Componenet
+- render() is a lifecycle methods, the only required method, it returns JSX, very similar to HTML,
+we can have **JS expressions embedded there** inside the curly braces, we can have events, etc.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![anatomy](images/anatomy.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Project Structure
+React is a single web page app, everything runs through one phissicial page:
+index.html.
+The main app component will be outputted in:
+```html
+<div id="root"></div>
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+- package.json: manifest file with info about our app, dependecies,
+packages, if we install packages, we have to put them there. The main ones
+are:
+    - Dependencies 
+        - React
+        - React-dom: Loading componentes in browser
+        - react-scripts: Dev server, being able to compile app, run tests.
+    - scripts:
+        - start: start dev server
+        - build: compile code in something browser can read without dev server,
+        before we deploy we want to do ```npm-run-build``` and then deploy build.
+        
+- Public
+    - index.html: Entry point. If we want to use bootstrap, we can include it there.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- src:
+    - index.js: Entry point to react. We import the main app component that
+    wraps everything. ReacDom is rendering the app component into the element
+    in the root div in index.html.
+    ```javascript
+      ReactDOM.render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>,
+        document.getElementById('root')
+      );
+    ```
+  - app.js: that's the component that's being loaded in index.js          
